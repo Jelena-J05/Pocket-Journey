@@ -1,8 +1,8 @@
 import './App.css';
-import Welcome from './components/Welcome.jxs';
+import WelcomePage from './components/WelcomePage';
 
 function App() {
-  <welcome/>  
+  <WelcomePage/>  
 }
 
 export default App;
