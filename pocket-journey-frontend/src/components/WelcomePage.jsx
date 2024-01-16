@@ -4,18 +4,18 @@ import { Carousel, Button, Form, Col, Row, Container } from 'react-bootstrap';
 const WelcomePage = () => {
   const handleLogin = (event) => {
     event.preventDefault();
-    // Handle login logic here
+    // Handle login logic 
   };
 
   const handleRegister = (event) => {
     event.preventDefault();
-    // Handle registration logic here
+    // Handle registration logic 
   };
 
   return (
     <Container>
       <Carousel>
-        {/* Map through your images and mission statements here */}
+        {/* Map images and mission statements here */}
         <Carousel.Item>
           <img
             className="d-block w-100"
