@@ -1,39 +1,21 @@
+// LoginPage.jsx
 import React from 'react';
-import { Carousel, Button, Form, Col, Row, Container } from 'react-bootstrap';
+import '../App.css';
+import FlyingPlane from './FlyingPlane';
 
-const WelcomePage = () => {
-/*   const handleLogin = (event) => {
-    event.preventDefault();
-    // Handle login logic 
-  };
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-    // Handle registration logic 
-  };
- */
-  return (
-    <Container>
-{/*       <Carousel>
-      </Carousel>
- */}
-      <Row className="mt-5">
-        <Col md={{ span: 6, offset: 3 }}>
-            <Button variant="primary" type="submit">
-              Login
-            </Button>
-        </Col>
-      </Row>
-
-      <Row className="mt-3">
-        <Col md={{ span: 6, offset: 3 }}>
-          <Button variant="secondary">
-            Register
-          </Button>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+function WelcomePage () {
+    return (
+        <div className="login-container">
+            <FlyingPlane/>
+            <form className="login-form">
+                <h2>Login</h2>
+                <input type="text" placeholder="Username" />
+                <input type="password" placeholder="Password" />
+                <button type="submit">Sign In</button>
+                <button type="button">Register</button>
+            </form>
+        </div>
+    );
+}
 
 export default WelcomePage;
