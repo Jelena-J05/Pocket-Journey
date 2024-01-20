@@ -2,68 +2,119 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* LoginPage.css */
 .login-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size:cover;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  position: relative;
+  transform: translateY(10%);
 }
+
 
 .login-form {
-  background: rgba(255, 255, 255, 0.5); /* Trasparenza */
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.login-form input,
-.login-form button {
-  margin: 10px 0;
-  width: 100%;
-  padding: 10px;
+.login-form h2 {
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  font-weight: bold;
 }
+
+.login-form input {
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #f0f0f0;
+}
+
+.login-form button {
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+.login-form button[type="button"] {
+  background-color: #6c757d;
+}
+
 
 .flying-plane {
-  position:absolute;
-  top:0;
-  will-change: transform; /* Ottimizzazione per le animazioni */
-  /* Inserisci altre proprietà per il tuo elemento aereo, come dimensioni, sfondo, ecc. */
+  position: relative;
+  top: 50px;
+  will-change: transform;
 }
 
+.login-plane-container {
+  height: 100%;
+}
+
+.footer-login {
+  height: 100px;
+}
+
+.centered-background {
+  background-image: url("../src/images/HeroBackground.png");
+  background-size: cover;
+  background-position: top;
+}
+
+.bottom-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.hero-container {
+  min-height: 50vh;
+}
+
+
+
+.hero-card {
+  border-radius: 110px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  width: 160px;
+  opacity: 0.7;
+
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.card-hover-animate {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover-animate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
