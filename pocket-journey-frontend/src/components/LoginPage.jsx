@@ -2,9 +2,21 @@ import React from "react";
 import FlyingPlane from "./FlyingPlane";
 import { FaGoogle } from "react-icons/fa";
 import FooterLogin from "./FooterLogin";
+/* import { useNavigate } from "react-router-dom"; */
 
 function LoginPage() {
+
+  /* let navigate = useNavigate(); */
+
+/*   const handleLogin = () => {
+    // Implementare la logica di login qui
+
+    // Dopo il login, reindirizzare l'utente, ad esempio alla homepage
+    navigate('/');
+  }; */
+
   return (
+    
     <>
       <div className="main-container">
         <div className="row justify-content-center gap-5">
@@ -29,7 +41,7 @@ function LoginPage() {
                   <label htmlFor="password">Password</label>
                   <input id="password" type="password" placeholder="Password" />
                   <button type="submit" className="sign-in-button">
-                    SIGN IN
+                    SIGN IN      {/* <button onClick={handleLogin}>Login</button> */}
                   </button>
                   <p className="register">
                     Not a member? <a href="#register">Register</a>

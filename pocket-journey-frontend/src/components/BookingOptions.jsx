@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Button, Row, Col, Container } from 'react-bootstrap';
+import { Card, Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaPlane, FaTrain, FaHotel, FaUtensils, FaStar } from 'react-icons/fa'; // Importa le icone di Font Awesome
+import { FaPlane, FaTrain, FaHotel, FaUtensils, FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const BookingOptions = () => {
   const options = [
@@ -14,24 +15,25 @@ const BookingOptions = () => {
 
   return (
     <Container>
-    <Row xs={12} md={4} lg={6} className="g-4 mt-5 mb-5 display-flex justify-content-evenly">
-      {options.map(option => (
-        <Col key={option.key}>
-          <Card href={option.link} className="card-hover-animate">
-            <Card.Body>
-              <Card.Title>
-                {option.icon} 
-              </Card.Title>
-              <Card.Text>
-                {option.text}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+      <Row xs={12} md={4} lg={6} className="g-4 mt-5 mb-5 justify-content-evenly">
+        {options.map(option => (
+          <Col key={option.key}>
+            <Link to={option.link} className="text-decoration-none">
+              <Card className="card-hover-animate">
+                <Card.Body>
+                  <Card.Title>
+                    {option.icon}
+                  </Card.Title>
+                  <Card.Text>
+                    {option.text}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </Container>
   );
-};
-
+}
 export default BookingOptions;

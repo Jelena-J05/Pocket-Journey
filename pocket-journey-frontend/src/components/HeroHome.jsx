@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import {Row, Col, Card } from "react-bootstrap";
 import LazyHero from "react-lazy-hero";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeroText from "./HeroText";
