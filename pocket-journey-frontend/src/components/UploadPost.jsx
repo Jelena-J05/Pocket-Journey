@@ -20,7 +20,7 @@ const UploadPost = ({ onPostSubmit }) => {
       return;
     }
 
-    // integrare la logica per inviare i dati al tuo backend.
+    // integrare la logica per inviare i dati al backend.
     // usare FormData per inviare l'immagine e la descrizione.
     const formData = new FormData();
     formData.append("image", image);

@@ -77,36 +77,34 @@ body {
   height: 100px;
 }
 
-.centered-background {
-  background-image: url("../src/images/HeroBackground.png");
-  background-size: cover;
-  background-position: top;
-}
-
 .bottom-text {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-
 .hero-container {
-  min-height: 50vh;
-}
-
-
-
-.hero-card {
-  border-radius: 110px;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  width: 160px;
-  opacity: 0.7;
+  background-image: url('./images/HeroBackground.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0.4;
 
 }
 
-.hero-card:hover {
-  transform: translateY(-5px);
+.hero-container::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
 
@@ -117,4 +115,9 @@ body {
 .card-hover-animate:hover {
   transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+  opacity: 0.4;
+
 }
