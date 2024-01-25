@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Posts from './Posts';
-import UploadPost from './UploadPost';
+import React, { useState, useEffect } from "react";
+import Posts from "./Posts";
+import UploadPost from "./UploadPost";
 
 const GlobalCommunityPage = () => {
   const [posts, setPosts] = useState([]);
@@ -10,10 +10,14 @@ const GlobalCommunityPage = () => {
   }, []);
 
   return (
-    <div>
-      <UploadPost/>
-      {posts.map(post => <Posts key={post.id} post={post} />)}
-    </div>
+    <>
+      <div>
+        <UploadPost />
+        {posts.map((post) => (
+          <Posts key={post.id} post={post} />
+        ))}
+      </div>
+    </>
   );
 };
 

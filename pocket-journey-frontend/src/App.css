@@ -79,34 +79,34 @@ body {
 
 .bottom-text {
   position: absolute;
-  left: 50%;
+  left: 20%;
   transform: translateX(-50%);
 }
 
 .hero-container {
   background-image: url('./images/HeroBackground.png');
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center center;
   min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  opacity: 0.4;
-
+  opacity: 0.8;
+  animation: fadeInOut 10s ease-in-out infinite;
 }
 
-.hero-container::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
 
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.8;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+}
 
 .card-hover-animate {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -117,7 +117,19 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.navbar {
-  opacity: 0.4;
 
+#basic-nav-dropdown {
+  color: white;
+}
+
+#basic-navbar-nav {
+  color: white;
+}
+
+.color-icon {
+  color: #ffa057;
+}
+
+.classe-opacity {
+  opacity: 0.3;
 }

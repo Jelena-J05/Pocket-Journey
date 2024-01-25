@@ -70,7 +70,7 @@ const Footer = () => {
           </Col>
         </Row>
       </Container>
-      <div className="text-center p-3 bg-secondary text-white fw-bold">
+      <div className="text-center p-3 bg-dark text-white fw-bold">
         © 2024 Pocket Journey
       </div>
     </footer>

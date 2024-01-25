@@ -1,26 +1,29 @@
-import React from 'react';
+/* import React from 'react';
 import TypeIt from 'typeit-react';
 
 const HeroText = () => {
   return (
-    <div className="bottom-text fs-5">
+    <div className="hero-text text-white fw-bold fs-5 bottom-text">
       <TypeIt
         options={{
           strings: [
-            "Here you can enjoy booking flights",
-            "Here you can plan your trip",
-            "Here you talk about travel"
+            "Here you can enjoy booking flights.",
+            "Here you can plan your trip.",
+            "Here you talk about travel."
           ],
           speed: 50,
-          breakLines: false,
+          breakLines: true,
           loop: true,
+          nextStringDelay: [1000, 1000], // Imposta un ritardo prima di passare alla prossima stringa
+          loopDelay: 3500, // Ritardo prima di ricominciare il loop
         }}
       />
     </div>
   );
 };
 
-export default HeroText;
+export default HeroText; */
+
 
 
 
