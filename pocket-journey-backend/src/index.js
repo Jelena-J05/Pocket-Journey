@@ -1,8 +1,7 @@
 import express from 'express';
-import apiRouter from "./apiRouter.js"
-import mongoose from "mongoose"
-import cors from "cors"
-
+import apiRouter from './apiRouter.js';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
 const port = process.env.PORT || 3030
 const server = express()
