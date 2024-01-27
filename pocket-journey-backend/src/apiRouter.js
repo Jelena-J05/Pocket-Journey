@@ -1,5 +1,15 @@
 import express from "express"
+import flightsRouter from "./flights/flightsRouter.js"
+import trainsRouter from "./trains/trainsRouter.js"
+import hotelsRouter from "./hotels/hotelsRouter.js"
+import restaurantsRouter from "./restaurants/restaurantsRouter.js"
+import activitiesRouter from "./activities/activitiesRouter.js"
+import usersRouter from "./users/usersRouter.js"
+
+
+
 const apiRouter = express.Router()
+
 
 apiRouter.get("/test", (req, res) => {
     res.json({ message: "hello, world" })
@@ -11,10 +21,12 @@ apiRouter.post("/body", (req, res) => {
     res.status(200).send()
 })
 
-/* import userRouter from "./users/userRouter.js"
-import loginRouter from "./login.js"
- */
-/* apiRouter.use("/profile", userRouter)
-apiRouter.use("/login", loginRouter)
- */
+apiRouter.use("/flights", flightsRouter)
+apiRouter.use("/trains", trainsRouter)
+apiRouter.use("/hotels", hotelsRouter)
+apiRouter.use("/restaurants", restaurantsRouter)
+apiRouter.use("/activities", activitiesRouter)
+apiRouter.use("/users", usersRouter)
+
+
 export default apiRouter
