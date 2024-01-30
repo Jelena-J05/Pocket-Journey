@@ -50,7 +50,7 @@ const UploadPost = ({ onPostSubmit }) => {
             ></textarea>
           </div>
           <div className="form-group d-flex justify-content-start gap-2 mt-2 align-items-center">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn button-style text-white fw-bold">
               Post
             </button>
             <input

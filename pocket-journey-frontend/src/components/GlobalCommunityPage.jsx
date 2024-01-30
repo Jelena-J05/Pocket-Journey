@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Posts from "./Posts";
 import UploadPost from "./UploadPost";
+import FooterDark from "./FooterDark";
 
 const GlobalCommunityPage = () => {
   const [posts, setPosts] = useState([]);
@@ -17,6 +18,7 @@ const GlobalCommunityPage = () => {
           <Posts key={post.id} post={post} />
         ))}
       </div>
+      <FooterDark/>
     </>
   );
 };

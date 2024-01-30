@@ -5,7 +5,8 @@ import hotelsRouter from "./hotels/hotelsRouter.js"
 import restaurantsRouter from "./restaurants/restaurantsRouter.js"
 import activitiesRouter from "./activities/activitiesRouter.js"
 import usersRouter from "./users/usersRouter.js"
-
+import loginRouter from "./login/loginRouter.js"
+ 
 
 
 const apiRouter = express.Router()
@@ -27,6 +28,7 @@ apiRouter.use("/hotels", hotelsRouter)
 apiRouter.use("/restaurants", restaurantsRouter)
 apiRouter.use("/activities", activitiesRouter)
 apiRouter.use("/users", usersRouter)
+apiRouter.use("/login", loginRouter) 
 
 
 export default apiRouter

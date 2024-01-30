@@ -19,7 +19,7 @@ const BookingOptions = () => {
         {options.map(option => (
           <Col key={option.key}>
             <Link to={option.link} className="text-decoration-none">
-              <Card className="card-hover-animate bg-light fs-5">
+              <Card className="card-hover-animate bg-light fs-5'>">
                 <Card.Body>
                   <Card.Title className='color-icon fs-4'>
                     {option.icon}

@@ -12,37 +12,35 @@ import {
     faPeopleRoof,
     faPlaneUp,
 } from "@fortawesome/free-solid-svg-icons"
-import { useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+
 
 function NavBar() {
-    const location = useLocation()
-    const [opacity, setOpacity] = useState(true)
 
+    const [user, setUser] = useState(null)
     useEffect(() => {
-        const handleScroll = () => {
-            const fiftyVhInPx = window.innerHeight * 0.5
-
-            const shouldSetOpacity = window.scrollY < fiftyVhInPx
-            setOpacity(!shouldSetOpacity)
-        }
-
-        window.addEventListener("scroll", handleScroll)
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
+        const userData = localStorage.getItem("user")
+        if (userData) {
+            setUser(JSON.parse(userData))
         }
     }, [])
 
-    // Check if the current page is not the homepage
-    const isNotHomePage = location.pathname !== "/"
+
+    
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.clear();
+        setUser(null); // Aggiorna lo stato `user` dopo il logout
+        navigate("/login");
+    };
+        
+
     return (
         <Navbar
             expand="lg"
-            className={`${isNotHomePage ? "" : "fixed-top"} ${
-                opacity ? "classe-opacity" : ""
-            }`}
             bg="dark"
-            variant="light"
+            className="py-0"
         >
             <Container>
                 <Navbar.Brand
@@ -110,15 +108,58 @@ function NavBar() {
                         <Nav.Link as={Link} to="/cart">
                             {" "}
                             {/* shopping cart */}
-                            <button className="border border-0 rounded bg-transparent fs-3 text-white">
-                                <FontAwesomeIcon icon={faSuitcaseRolling} />
+                            <button className="border border-0 rounded bg-transparent text-white">
+                                <span>Pay </span>
+                                <FontAwesomeIcon
+                                    icon={faSuitcaseRolling}
+                                    className="fs-4 ms-2"
+                                />
                             </button>
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/login">
-                            <button className="border border-0 rounded bg-transparent fs-4 text-white">
-                                <FontAwesomeIcon icon={faUserPen} />{" "}
-                            </button>
-                        </Nav.Link>
+                        {!user ?  (
+                            <Nav.Link as={Link} to="/login">
+                                <button className="border border-0 rounded bg-transparent text-white">
+                                    <span>Login</span>
+                                    <FontAwesomeIcon
+                                        icon={faUserPen}
+                                        className="fs-5 ms-2"
+                                    />
+                                </button>
+                            </Nav.Link>
+                        ) : (
+                            <NavDropdown
+                                title={
+                                    <span>
+                                        <img
+                                            src={user.avatar}
+                                            alt="User Avatar"
+                                            className="navbar-avatar rounded-circle img-fluid m-2"
+                                            style={{
+                                                width: "40px",
+                                                height: "40px",
+                                            }} // Puoi aggiustare le dimensioni qui
+                                        />
+                                        {user.name}
+                                    </span>
+                                }
+                                id="basic-nav-dropdown"
+                            >
+                                {/* Add dropdown items here */}
+                                <NavDropdown.Item href="#action1">
+                                    Profile
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action2">
+                                    Settings
+                                </NavDropdown.Item>
+                                {/* ... other dropdown items */}
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item
+                                onClick={handleLogout}
+                                >
+                                    Logout
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,14 +1,4 @@
 import React, { useState } from "react";
-import {
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardHeader,
-  MDBCardBody,
-  MDBTypography,
-  MDBBtn,
-  MDBInput,
-} from "mdb-react-ui-kit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -45,79 +35,82 @@ function BookingForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted Guests Data:", guests);
-    // Qui va aggiunta la logica per l'invio dei dati
   };
 
   return (
-    <MDBRow className="justify-content-start">
-      <MDBCol md="8">
-        <MDBCard className="mb-4">
-          <MDBCardHeader className="py-3">
-            <MDBTypography tag="h5" className="mb-0">
-              Add Guest's Data
-            </MDBTypography>
-          </MDBCardHeader>
-          <MDBCardBody>
+    <div className="row justify-content-start">
+      <div className="col-12 col-md-8">
+        <div className="card mb-4">
+          <div className="card-header py-3">
+            <h5 className="mb-0">Add Guest's Data</h5>
+          </div>
+          <div className="card-body">
             <form onSubmit={handleSubmit}>
               {guests.map((guest, index) => (
                 <div key={index}>
-                  <MDBRow>
-                    <MDBCol lg="6" md="12" className="mb-4">
-                      <label htmlFor="First Name"> First Name </label>
-                      <MDBInput
+                  <div className="row">
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4">
+                      <label htmlFor="firstName">First Name</label>
+                      <input
+                        className="form-control"
                         name="firstName"
                         type="text"
                         value={guest.firstName}
                         onChange={(e) => handleInputChange(index, e)}
                       />
-                    </MDBCol>
-                    <MDBCol lg="6" md="12" className="mb-4">
-                      <label htmlFor="Last Name"> Last Name </label>
-                      <MDBInput
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4">
+                      <label htmlFor="lastName">Last Name</label>
+                      <input
+                        className="form-control"
                         name="lastName"
                         type="text"
                         value={guest.lastName}
                         onChange={(e) => handleInputChange(index, e)}
                       />
-                    </MDBCol>
-                    <MDBCol lg="6" md="12" className="mb-4">
-                      <label htmlFor="Date of Birth"> Date of Birth </label>
-                      <MDBInput
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4">
+                      <label htmlFor="dateOfBirth">Date of Birth</label>
+                      <input
+                        className="form-control"
                         name="dateOfBirth"
                         type="date"
                         value={guest.dateOfBirth}
                         onChange={(e) => handleInputChange(index, e)}
-                        className="text-center"
                       />
-                    </MDBCol>
-                    <MDBCol lg="6" md="12" className="mb-4">
-                    <label htmlFor="Email"> Email </label>
-                      <MDBInput
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-12 mb-4">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        className="form-control"
                         name="email"
                         type="email"
                         value={guest.email}
                         onChange={(e) => handleInputChange(index, e)}
                       />
-                    </MDBCol>
-                  </MDBRow>
-                  {guests.length > 1 && (
-                    <MDBBtn color="danger" onClick={() => removeGuest(index)}>
-                      <FontAwesomeIcon icon={faTrash} /> Remove Guest
-                    </MDBBtn>
-                  )}
+                    </div>
+                    {guests.length > 1 && (
+                      <div className="col-12 mb-2">
+                        <button className="btn btn-danger" onClick={() => removeGuest(index)}>
+                          <FontAwesomeIcon icon={faTrash} /> Remove Guest
+                        </button>
+                      </div>
+                    )}
+                  </div>
                   <hr />
                 </div>
               ))}
-              <MDBBtn onClick={addGuest}>Add Additional Guest</MDBBtn>
-              <MDBBtn type="submit" className="ms-3">
+              <button className="btn button-style text-white fw-bold " onClick={addGuest}>Add Additional Guest</button>
+              <button type="submit" className="btn button-style text-white fw-bold ms-3">
                 Save Guest's Data
-              </MDBBtn>
+              </button>
             </form>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default BookingForm;
+
