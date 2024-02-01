@@ -14,9 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 
-
 function NavBar() {
-
     const [user, setUser] = useState(null)
     useEffect(() => {
         const userData = localStorage.getItem("user")
@@ -25,23 +23,16 @@ function NavBar() {
         }
     }, [])
 
-
-    
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleLogout = () => {
-        localStorage.clear();
-        setUser(null); // Aggiorna lo stato `user` dopo il logout
-        navigate("/login");
-    };
-        
+        localStorage.clear()
+        setUser(null)
+        navigate("/login")
+    }
 
     return (
-        <Navbar
-            expand="lg"
-            bg="dark"
-            className="py-0"
-        >
+        <Navbar expand="lg" bg="dark" className="py-0">
             <Container>
                 <Navbar.Brand
                     href="#home"
@@ -116,7 +107,7 @@ function NavBar() {
                                 />
                             </button>
                         </Nav.Link>
-                        {!user ?  (
+                        {!user ? (
                             <Nav.Link as={Link} to="/login">
                                 <button className="border border-0 rounded bg-transparent text-white">
                                     <span>Login</span>
@@ -137,25 +128,22 @@ function NavBar() {
                                             style={{
                                                 width: "40px",
                                                 height: "40px",
-                                            }} // Puoi aggiustare le dimensioni qui
+                                            }}
                                         />
                                         {user.name}
                                     </span>
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                {/* Add dropdown items here */}
                                 <NavDropdown.Item href="#action1">
                                     Profile
                                 </NavDropdown.Item>
                                 <NavDropdown.Item href="#action2">
                                     Settings
                                 </NavDropdown.Item>
-                                {/* ... other dropdown items */}
+
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item
-                                onClick={handleLogout}
-                                >
+                                <NavDropdown.Item onClick={handleLogout}>
                                     Logout
                                 </NavDropdown.Item>
                             </NavDropdown>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router"
  */ import { useState } from "react"
 /* import { GoogleLoginButton } from "react-social-login-buttons"
  */
+import { Link } from "react-router-dom"
 
 function Login() {
     const navigate = useNavigate()
@@ -27,7 +28,6 @@ function Login() {
             let data = await response.json()
             localStorage.setItem("token", data.token)
 
-            // Salva l'intero payload dell'utente invece del solo id
             localStorage.setItem("user", JSON.stringify(data.payload))
 
             navigate("/")
@@ -97,12 +97,12 @@ function Login() {
                                         </button>
                                         <p className="register">
                                             Not a member?{" "}
-                                            <a
-                                                href="#register"
+                                            <Link
+                                                to="/register"
                                                 className="fw-bold color-icon"
                                             >
                                                 Register
-                                            </a>
+                                            </Link>
                                         </p>
                                     </form>
                                 </div>

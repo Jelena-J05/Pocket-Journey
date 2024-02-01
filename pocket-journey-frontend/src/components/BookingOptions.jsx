@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaPlane, FaTrain, FaHotel, FaUtensils, FaStar } from 'react-icons/fa';
@@ -36,4 +36,4 @@ const BookingOptions = () => {
     </Container>
   );
 }
-export default BookingOptions;
+export default BookingOptions; */

@@ -13,13 +13,14 @@ import BookRestaurants from "./components/BookRestaurants";
 import BookExperiences from "./components/BookExperiences";
 import GlobalCommunityPage from "./components/GlobalCommunityPage";
 import LayoutWithNavBar from "./components/LayoutWithNavbar";
+import Register from "./components/Register";
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/register" element={<Register />} />
           <Route element={<LayoutWithNavBar/>}>
           <Route path="/" element={<HomePage />} />
           <Route path="/cart" element={<ShoppingCart />} />

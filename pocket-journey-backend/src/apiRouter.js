@@ -6,6 +6,7 @@ import restaurantsRouter from "./restaurants/restaurantsRouter.js"
 import activitiesRouter from "./activities/activitiesRouter.js"
 import usersRouter from "./users/usersRouter.js"
 import loginRouter from "./login/loginRouter.js"
+import registerRouter from "./register/registerRouter.js"
  
 
 
@@ -29,6 +30,7 @@ apiRouter.use("/restaurants", restaurantsRouter)
 apiRouter.use("/activities", activitiesRouter)
 apiRouter.use("/users", usersRouter)
 apiRouter.use("/login", loginRouter) 
+apiRouter.use("/register", registerRouter) 
 
 
 export default apiRouter
