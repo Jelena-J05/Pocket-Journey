@@ -6,18 +6,18 @@ const avatarUpload = multer({
     storage: new CloudinaryStorage({
       cloudinary,
       params: {
-        folder: "Pocket Journey/Avatars"
+        folder: "Pocket Journey"
       },
     }),
   }).single('avatar');
   
-  const imageUpload = multer({
+  /* const imageUpload = multer({
     storage: new CloudinaryStorage({
       cloudinary,
       params: {
-        folder: "Pocket Journey/Images"
+        folder: "Pocket Journey"
       },
     }),
-  }).single('image');
+  }).single('image'); */
 
-  export default multer
+  export default avatarUpload

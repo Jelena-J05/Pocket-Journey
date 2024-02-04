@@ -31,6 +31,7 @@ apiRouter.use("/activities", activitiesRouter)
 apiRouter.use("/users", usersRouter)
 apiRouter.use("/login", loginRouter) 
 apiRouter.use("/register", registerRouter) 
+apiRouter.use("/profile", usersRouter) 
 
 
 export default apiRouter

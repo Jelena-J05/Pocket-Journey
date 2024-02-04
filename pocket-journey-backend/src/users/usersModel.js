@@ -4,15 +4,15 @@ import bcrypt from "bcrypt"
 const UsersSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        /* required: true, */
     },
     lastName: {
         type: String,
-        required: true,
+       /*  required: true, */
     },
     email: {
         type: String,
-        required: true,
+      /*   required: true, */
     },
     password: {
         type: String,
@@ -24,14 +24,15 @@ const UsersSchema = new Schema({
         type: String,
     },
     avatar: {
-        type: String,
-    },
+      type: String,
+      required: false // Imposta su true se l'avatar è obbligatorio
+  },
     bio: {
         type: String,
     },
 });
 
-UsersSchema.pre("save", async function () {
+/* UsersSchema.pre("save", async function () {
     const newUserData = this
   
     if (newUserData.isModified("password")) {
@@ -66,6 +67,6 @@ UsersSchema.pre("save", async function () {
     } else {
       return null
     }
-  })
+  }) */
 
 export const User = mongoose.model("users", UsersSchema)

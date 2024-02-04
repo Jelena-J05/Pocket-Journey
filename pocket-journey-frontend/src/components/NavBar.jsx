@@ -11,17 +11,43 @@ import {
     faSuitcaseRolling,
     faPeopleRoof,
     faPlaneUp,
+    faUserMinus,
+    faGear,
+    faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
+import DeleteAccount from "./UserAccount/DeleteAccount" // Importa il componente DeleteAccount
+import { useUser } from '../UserContext'; // Assicurati che il percorso sia corretto
+
 
 function NavBar() {
-    const [user, setUser] = useState(null)
-    useEffect(() => {
-        const userData = localStorage.getItem("user")
-        if (userData) {
-            setUser(JSON.parse(userData))
-        }
-    }, [])
+    
+    const { user, setUser } = useUser();
+
+
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+
+    const handleShowDeleteModal = () => {
+        setShowDeleteModal(true)
+    }
+
+    const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false)
+    }
+  
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    // Carica i dati dell'utente da localStorage
+    const userData = localStorage.getItem("user");
+    const authToken = localStorage.getItem("token");
+
+    if (userData && authToken) {
+      setUser(JSON.parse(userData));
+      setToken(authToken);
+    }
+  }, []);
 
     const navigate = useNavigate()
 
@@ -74,26 +100,6 @@ function NavBar() {
                                 className="ms-2 fs-5"
                             />
                         </Nav.Link>
-                        <NavDropdown
-                            title={<span style={{ color: "white" }}>Book</span>}
-                            id="basic-nav-dropdown"
-                        >
-                            <NavDropdown.Item as={Link} to="/flights">
-                                Flights
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/trains">
-                                Trains
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/hotels">
-                                Hotels
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/restaurants">
-                                Restaurants
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/experiences">
-                                Experiences
-                            </NavDropdown.Item>
-                        </NavDropdown>
                     </Nav>
                     <Nav className="ms-auto display-flex justify-content-evenly align-items-center gap-2">
                         <Nav.Link as={Link} to="/cart">
@@ -122,7 +128,7 @@ function NavBar() {
                                 title={
                                     <span>
                                         <img
-                                            src={user.avatar}
+                                            src={`${user.avatar}?${new Date().getTime()}`}
                                             alt="User Avatar"
                                             className="navbar-avatar rounded-circle img-fluid m-2"
                                             style={{
@@ -135,15 +141,35 @@ function NavBar() {
                                 }
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="#action1">
-                                    Profile
+                                <NavDropdown.Item
+                                    onClick={() => navigate("/profile")}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faGear}
+                                        className="fs-6 me-2 pe-1"
+                                    />
+                                    Edit Account
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action2">
-                                    Settings
+                                <NavDropdown.Item
+                                    href="#action2"
+                                    onClick={handleShowDeleteModal}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faUserMinus}
+                                        className="fs-6 me-2"
+                                    />
+                                    Delete Account
                                 </NavDropdown.Item>
+
+                                {/* Passa showDeleteModal come prop al componente DeleteAccount */}
+                                <DeleteAccount show={showDeleteModal} handleClose={handleCloseDeleteModal} userId={user ? user.id : null} token={token}   />
 
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={handleLogout}>
+                                    <FontAwesomeIcon
+                                        icon={faRightFromBracket}
+                                        className="fs-6 me-2"
+                                    />{" "}
                                     Logout
                                 </NavDropdown.Item>
                             </NavDropdown>

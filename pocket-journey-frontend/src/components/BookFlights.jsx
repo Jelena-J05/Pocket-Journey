@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+/* import React, { useState } from "react"
 import { Container, Row, Col, Card, Form, Button, Modal } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -36,9 +36,9 @@ function BookFlights() {
     
     const [flightData, setFlightData] = useState({initialFlightData})
 
-    const [modalShow, setModalShow] = useState(false)
-
-    const [searchResults, setSearchResults] = useState([])
+    /* const [modalShow, setModalShow] = useState(false)
+ */
+    /* const [searchResults, setSearchResults] = useState([])
 
     const handleInputChange = (event) => {
         const { name, value, type, checked } = event.target
@@ -81,10 +81,10 @@ function BookFlights() {
         setFlightData({ ...flightData, [name]: value })
     }
 
-    const openModal = () => setModalShow(true)
-    const closeModal = () => setModalShow(false)
+    /* const openModal = () => setModalShow(true)
+    const closeModal = () => setModalShow(false) */
 
-    return (
+    /* return (
         <>
         <Container>
             <Row className="justify-content-center mt-5">
@@ -301,4 +301,4 @@ function BookFlights() {
     )
 }
 
-export default BookFlights
+export default BookFlights  */

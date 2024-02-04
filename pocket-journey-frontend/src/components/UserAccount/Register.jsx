@@ -1,17 +1,21 @@
 import React, { useState } from "react"
-import FooterDark from "./FooterDark"
+import FooterDark from "../FooterDark"
 import { useNavigate } from "react-router"
 
 function Register() {
     const navigate = useNavigate()
     const [newUser, setNewUser] = useState({
-        name:"",
-        lastName:"",
+        name: "",
+        lastName: "",
         email: "",
         password: "",
+        avatar: "",
     })
-
-    const handleSubmit = async (e) => {
+    const handleAvatarChange = (e) => {
+        // Imposta il file selezionato nell'oggetto di stato newUser
+        setNewUser({ ...newUser, avatar: e.target.files[0] });
+    };
+    /* const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -24,22 +28,56 @@ function Register() {
             })
 
             if (response.ok) {
-                navigate("/login")
+                let data = await response.json()
+                localStorage.setItem("token", data.token)
+                localStorage.setItem("user", JSON.stringify(data.payload))
+                navigate("/") // o qualsiasi altra rotta post-login
             } else {
                 console.log("Registration failed")
             }
         } catch (error) {
             console.error("Error during registration process", error)
         }
-    }
+    } */
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const formData = new FormData();
+        formData.append('name', newUser.name);
+        formData.append('lastName', newUser.lastName);
+        formData.append('email', newUser.email);
+        formData.append('password', newUser.password);
+        if (newUser.avatar) {
+            formData.append('avatar', newUser.avatar);
+        }
+    
+        try {
+            const response = await fetch("http://localhost:3030/api/register", {
+                method: "POST",
+                body: formData, // Non impostare l'header 'Content-Type', lascia che il browser lo faccia
+            });
+    
+            if (response.ok) {
+                let data = await response.json();
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.payload));
+                navigate("/"); // o qualsiasi altra rotta post-login
+            } else {
+                console.log("Registration failed");
+            }
+        } catch (error) {
+            console.error("Error during registration process", error);
+        }
+    };
 
     return (
         <>
-            <div className="main-container mb-5 mt-0">
+            <div className="main-container mb-5">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6">
-                            <div className="login-plane-container">
+                            <div className="login-plane-container mt-2">
                                 <div className="login-container">
                                     <form
                                         className="login-form"
@@ -103,6 +141,15 @@ function Register() {
                                                     ...newUser,
                                                     password: e.target.value,
                                                 })
+                                            }
+                                        />
+                                        <label htmlFor="avatar"> Profile Photo</label>
+                                        <input
+                                            type="file"
+                                            id="avatar"
+                                            name="avatar"
+                                            onChange={(e) =>
+                                                handleAvatarChange(e)
                                             }
                                         />
                                         <button

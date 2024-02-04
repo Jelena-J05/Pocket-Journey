@@ -60,6 +60,17 @@ usersRouter
         }
     ) /*WORKING*/
 
+    .put("/profile", authControl, async (req, res, next) => {
+        try {
+            const userId = req.user.id; // Assumendo che 'req.user' sia popolato dal middleware di autenticazione con i dati dell'utente loggato
+            let user = await User.findByIdAndUpdate(userId, req.body, {new: true});
+            res.send(user);
+        } catch (error) {
+            next(error)       
+        }
+
+    })
+
     .delete("/:id", async (req, res, next) => {
         try {
             await User.deleteOne({
