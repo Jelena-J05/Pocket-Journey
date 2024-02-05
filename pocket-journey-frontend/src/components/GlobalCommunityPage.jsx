@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Posts from "./Posts";
 import UploadPost from "./UploadPost";
-import FooterDark from "./FooterDark";
+import FooterDark from "./Footer/FooterDark";
 
 const GlobalCommunityPage = () => {
   const [posts, setPosts] = useState([]);

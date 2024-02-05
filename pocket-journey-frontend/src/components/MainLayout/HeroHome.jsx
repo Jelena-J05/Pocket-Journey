@@ -12,7 +12,7 @@ export default function HeroHome({ onSearch }) {
     to: "",
     departureDate: "",
     returnDate: "",
-    guests: 1,
+    guests: "",
     isOneWay: false,
   });
 

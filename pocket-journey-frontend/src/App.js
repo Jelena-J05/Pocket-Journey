@@ -12,13 +12,15 @@ import LayoutWithNavBar from "./components/LayoutWithNavbar";
 import Register from "./components/UserAccount/Register";
 import EditAccount from "./components/UserAccount/EditAccount";
 import { UserProvider } from './UserContext'; // Importa UserProvider
-import NavBar from "./components/NavBar";
-
+import { CartProvider } from './CartContext'; // Importa il CartProvider
 
 function App() {
+
+
   return (
       <BrowserRouter>
       <UserProvider> {/* Utilizza UserProvider qui */}
+      <CartProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -29,6 +31,7 @@ function App() {
           <Route path="/community" element={<GlobalCommunityPage />} />
           </Route>
         </Routes>
+        </CartProvider>
         </UserProvider>
       </BrowserRouter>
   );

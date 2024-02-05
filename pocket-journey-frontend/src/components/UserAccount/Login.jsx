@@ -1,13 +1,14 @@
 import React from "react"
 /* import FlyingPlane from "./FlyingPlane"
- */ import { FaGoogle } from "react-icons/fa"
-import FooterDark from "../FooterDark"
+ */
+import FooterDark from "../Footer/FooterDark"
 import { useNavigate } from "react-router"
 /* import { Link } from "react-router-dom"
  */ import { useState } from "react"
 /* import { GoogleLoginButton } from "react-social-login-buttons"
  */
 import { Link } from "react-router-dom"
+import "./Login.scss"
 
 function Login() {
     const navigate = useNavigate()
@@ -46,8 +47,9 @@ function Login() {
     };
     return (
         <>
-            <div className="main-container mb-5 mt-0">
-                <div className="container">
+            <section className="section-container">
+{/*             <div className="main-container mb-5 mt-0">
+ */}                <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6">
                             <div className="login-plane-container">
@@ -112,8 +114,9 @@ function Login() {
                         </div>
                     </div>
                 </div>
+{/*                 </div>
+ */}                </section>
                 <FooterDark />
-            </div>
         </>
     )
 }

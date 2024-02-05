@@ -17,14 +17,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 import DeleteAccount from "./UserAccount/DeleteAccount" // Importa il componente DeleteAccount
-import { useUser } from '../UserContext'; // Assicurati che il percorso sia corretto
-
+import { useUser } from "../UserContext" // Assicurati che il percorso sia corretto
+import { useCart } from "../CartContext"
 
 function NavBar() {
-    
-    const { user, setUser } = useUser();
+    const { user, setUser } = useUser()
+    const { cartItems } = useCart()
 
 
+const [itemCount, setItemCount] = useState(0);
+
+useEffect(() => {
+  const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  setItemCount(count);
+}, [cartItems]); // Dipendenza da cartItems per ricalcolare al loro cambiamento
 
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 
@@ -35,19 +41,19 @@ function NavBar() {
     const handleCloseDeleteModal = () => {
         setShowDeleteModal(false)
     }
-  
-  const [token, setToken] = useState(null);
 
-  useEffect(() => {
-    // Carica i dati dell'utente da localStorage
-    const userData = localStorage.getItem("user");
-    const authToken = localStorage.getItem("token");
+    const [token, setToken] = useState(null)
 
-    if (userData && authToken) {
-      setUser(JSON.parse(userData));
-      setToken(authToken);
-    }
-  }, []);
+    useEffect(() => {
+        // Carica i dati dell'utente da localStorage
+        const userData = localStorage.getItem("user")
+        const authToken = localStorage.getItem("token")
+
+        if (userData && authToken) {
+            setUser(JSON.parse(userData))
+            setToken(authToken)
+        }
+    }, [])
 
     const navigate = useNavigate()
 
@@ -105,12 +111,15 @@ function NavBar() {
                         <Nav.Link as={Link} to="/cart">
                             {" "}
                             {/* shopping cart */}
-                            <button className="border border-0 rounded bg-transparent text-white">
-                                <span>Pay </span>
+                            <button className="position-relative border-0 bg-transparent text-white">
+                                Pay
                                 <FontAwesomeIcon
                                     icon={faSuitcaseRolling}
                                     className="fs-4 ms-2"
                                 />
+                                <span className="badge bg-secondary position-absolute top-0 start-100 translate-middle button-style" style={{ fontSize: '0.6em', padding: '0.25em 0.4em' }}>
+                                {itemCount}
+                                </span>
                             </button>
                         </Nav.Link>
                         {!user ? (
@@ -128,7 +137,9 @@ function NavBar() {
                                 title={
                                     <span>
                                         <img
-                                            src={`${user.avatar}?${new Date().getTime()}`}
+                                            src={`${
+                                                user.avatar
+                                            }?${new Date().getTime()}`}
                                             alt="User Avatar"
                                             className="navbar-avatar rounded-circle img-fluid m-2"
                                             style={{
@@ -162,7 +173,12 @@ function NavBar() {
                                 </NavDropdown.Item>
 
                                 {/* Passa showDeleteModal come prop al componente DeleteAccount */}
-                                <DeleteAccount show={showDeleteModal} handleClose={handleCloseDeleteModal} userId={user ? user.id : null} token={token}   />
+                                <DeleteAccount
+                                    show={showDeleteModal}
+                                    handleClose={handleCloseDeleteModal}
+                                    userId={user ? user.id : null}
+                                    token={token}
+                                />
 
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={handleLogout}>

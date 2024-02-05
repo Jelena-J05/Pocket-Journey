@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react"
+/* import { useNavigate } from "react-router-dom" */
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -20,8 +20,8 @@ function EditAccount() {
         bio: "",
     })
 
-    const { id } = useParams()
-    const navigate = useNavigate()
+   /*  const { id } = useParams() */
+   /*  const navigate = useNavigate() */
     const token = localStorage.getItem("token")
     /*  const user = JSON.parse(localStorage.getItem("user")) */
 

@@ -1,6 +1,6 @@
 import React from 'react';
 /* import BookingOptions from './BookingOptions'; */
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import Services from './Services';
 import TopDestinations from './TopDestinations';
 import MainLayout from './MainLayout/MainLayout';

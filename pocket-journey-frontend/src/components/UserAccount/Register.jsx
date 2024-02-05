@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import FooterDark from "../FooterDark"
+import FooterDark from "../Footer/FooterDark"
 import { useNavigate } from "react-router"
 
 function Register() {
