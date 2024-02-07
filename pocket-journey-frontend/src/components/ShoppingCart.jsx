@@ -65,7 +65,7 @@ function ShoppingCart() {
                                                     </span>
                                                     <span>
                                                         Quantity:{" "}
-                                                        {item.quantity}
+                                                        {item.guests}
                                                     </span>
                                                     <button
                                                         onClick={() =>

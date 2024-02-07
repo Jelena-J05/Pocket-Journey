@@ -1,11 +1,11 @@
 .section-container {
-    background-image: url("../../images/login-background.png");
-    background-size: contain;
+    background-image: url("../../images/login-background.jpg");
+    background-size: cover;
     background-position: center;
+    height: 100vh;
 
 
 }
-
 
 /* .main-container {
     background-image: url("../../images/login-background.png");
@@ -19,9 +19,10 @@
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.2); 
     position: relative;
     transform: translateY(10%);
+    
 }
 
 .login-form {
@@ -42,6 +43,7 @@
     border-radius: 8px;
     border: none;
     background-color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.5); 
 }
 
 .login-form button {
@@ -52,6 +54,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: bold;
+    opacity: 0.9;
 }
 
 .login-form button[type="button"] {

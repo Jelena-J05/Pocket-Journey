@@ -7,6 +7,12 @@ import activitiesRouter from "./activities/activitiesRouter.js"
 import usersRouter from "./users/usersRouter.js"
 import loginRouter from "./login/loginRouter.js"
 import registerRouter from "./register/registerRouter.js"
+import postsRouter from "./posts/postsRouter.js"
+import reactionsRouter from "./postreactions/reactionsRouter.js"
+import commentsRouter from "./postcomments/commentsRouter.js"
+
+
+
  
 
 
@@ -32,6 +38,9 @@ apiRouter.use("/users", usersRouter)
 apiRouter.use("/login", loginRouter) 
 apiRouter.use("/register", registerRouter) 
 apiRouter.use("/profile", usersRouter) 
+apiRouter.use("/posts", postsRouter) 
+apiRouter.use("/comments", commentsRouter) 
+apiRouter.use("/reactions", reactionsRouter) 
 
 
 export default apiRouter

@@ -16,8 +16,8 @@ import {
     faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
-import DeleteAccount from "./UserAccount/DeleteAccount" // Importa il componente DeleteAccount
-import { useUser } from "../UserContext" // Assicurati che il percorso sia corretto
+import DeleteAccount from "./UserAccount/DeleteAccount" 
+import { useUser } from "../UserContext" 
 import { useCart } from "../CartContext"
 
 function NavBar() {

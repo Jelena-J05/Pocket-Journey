@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Posts from "./Posts";
 import UploadPost from "./UploadPost";
 import FooterDark from "./Footer/FooterDark";
+import "./GlobalCommunity.scss"
 
 const GlobalCommunityPage = () => {
   const [posts, setPosts] = useState([]);

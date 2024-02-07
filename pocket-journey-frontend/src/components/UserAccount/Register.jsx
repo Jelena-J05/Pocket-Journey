@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import FooterDark from "../Footer/FooterDark"
 import { useNavigate } from "react-router"
+import "./Register.scss"
+
 
 function Register() {
     const navigate = useNavigate()
@@ -73,11 +75,9 @@ function Register() {
 
     return (
         <>
-            <div className="main-container mb-5">
-                <div className="container">
+            <div className="section-container" style={{ marginTop: '-65px' }}>
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6">
-                            <div className="login-plane-container mt-2">
                                 <div className="login-container">
                                     <form
                                         className="login-form"
@@ -160,10 +160,8 @@ function Register() {
                                         </button>
                                     </form>
                                 </div>
-                            </div>
                         </div>
                     </div>
-                </div>
                 <FooterDark />
             </div>
         </>
