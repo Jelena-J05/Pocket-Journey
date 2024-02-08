@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row"
 import "./EditAccount.scss"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { useUser } from "../../UserContext" // Assicurati che il percorso sia corretto
+import { useUser } from "../../contexts/UserContext" // Assicurati che il percorso sia corretto
 
 function EditAccount() {
     const { user, setUser } = useUser()

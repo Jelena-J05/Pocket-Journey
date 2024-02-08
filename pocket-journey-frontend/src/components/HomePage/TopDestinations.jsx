@@ -1,10 +1,10 @@
 import React from "react"
 import { Container, Card, Row, Col } from "react-bootstrap"
 import styled from "styled-components"
-import America from "../images/America.jpg"
-import Italy from "../images/Italy.jpg"
-import Japan from "../images/Japan.jpg"
-import Australia from "../images/Australia.jpg"
+import America from "../../images/America.jpg"
+import Italy from "../../images/Italy.jpg"
+import Japan from "../../images/Japan.jpg"
+import Australia from "../../images/Australia.jpg"
 
 const HoverEffect = styled.div`
     transition: transform 0.3s ease-in-out;

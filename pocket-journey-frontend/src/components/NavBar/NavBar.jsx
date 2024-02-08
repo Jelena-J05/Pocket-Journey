@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from "react-bootstrap/NavDropdown"
 import { Link } from "react-router-dom"
-import logo from "../images/logo.png"
+import logo from "../../images/logo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faUserPen,
@@ -16,12 +16,12 @@ import {
     faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
-import DeleteAccount from "./UserAccount/DeleteAccount" 
-import { useUser } from "../UserContext" 
-import { useCart } from "../CartContext"
+import DeleteAccount from "../UserAccount/DeleteAccount" 
+import { useUser } from "../../contexts/UserContext" 
+import { useCart } from "../../contexts/CartContext"
 
 function NavBar() {
-    const { user, setUser } = useUser()
+    const { user, setUser} = useUser()
     const { cartItems } = useCart()
 
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
-import { useCart } from '../../CartContext';
+import { useCart } from '../../contexts/CartContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faPlane,

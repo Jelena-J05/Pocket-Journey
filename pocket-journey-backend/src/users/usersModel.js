@@ -30,6 +30,10 @@ const UsersSchema = new Schema({
     bio: {
         type: String,
     },
+  
+   likes:  {
+        type: String,
+    }
 });
 
 /* UsersSchema.pre("save", async function () {

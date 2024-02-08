@@ -10,7 +10,7 @@ const PostComments = ({ postId }) => {
   return (
     <div>
       {comments.map(comment => <p key={comment.id}>{comment.text}</p>)}
-      <button onClick={() => addComment("Nuovo Commento")}>Aggiungi Commento</button>
+      <button onClick={() => addComment("Nuovo Commento")} className='text-muted border border-none rounded-3 fs-6 mt-3'> Comment</button>
     </div>
   );
 };

@@ -4,26 +4,22 @@ import { Reaction } from "./reactionsModel.js"
 const reactionsRouter = express.Router()
 
 reactionsRouter
-    .get(
-        "/", async (req, res, next) => {
-            try {
-                let reactions = await reactions.find()
-                res.send(reactions)
-            } catch (error) {
-                next(error)
-            }
+    .get("/", async (req, res, next) => {
+        try {
+            let reactions = await Reaction.find();
+            res.send(reactions);
+        } catch (error) {
+            next(error);
         }
-    ) 
-    .get(
-        "/:id",  async (req, res, next) => {
-            try {
-                let reaction = await Reaction.findById(req.params.id)
-                res.send(post)
-            } catch (error) {
-                next(error)
-            }
+    })
+    .get("/:id",  async (req, res, next) => {
+        try {
+            let reaction = await Reaction.findById(req.params.id);
+            res.send(reaction); 
+        } catch (error) {
+            next(error);
         }
-    ) 
+    })
 
     .post("/", async (req, res) => {
 

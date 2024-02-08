@@ -1,12 +1,64 @@
 import express from "express"
 import { Post } from "./postsModel.js"
-import avatarUpload from "../a-settings/cloudinary.js"
+/* import avatarUpload from "../a-settings/cloudinary.js" */
 import authControl from "../a-settings/authControl.js"
+import { Comment } from "../postcomments/commentsModel.js";
+
 
 const postsRouter = express.Router()
 
 postsRouter
-    .get(
+
+.get("/", async (req, res) => {
+    try {
+        let posts = await Post.find()
+        .populate('user')
+          .populate('comments');
+        res.json(posts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+})
+    
+.post("/", authControl, async (req, res) => {
+        try {
+            const newPost = new Post({
+                user: req.user._id, // Assumendo che authControl aggiunga l'oggetto user a req
+                ...req.body,
+            });
+    
+            await newPost.save();
+            res.status(201).send(newPost);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Server error");
+        }
+    })
+
+    .post("/:postId/comments", authControl, async (req, res) => {
+        try {
+            const { text } = req.body; // Ottieni il testo del commento dal corpo della richiesta
+            const postId = req.params.postId; // Ottieni l'ID del post dal parametro URL
+    
+            // Crea un nuovo commento
+            const newComment = await Comment.create({
+                text: text,
+                user: req.user._id, // ID dell'utente autenticato
+                post: postId,
+            });
+    
+            // Aggiungi il commento al post specifico
+            await Post.findByIdAndUpdate(postId, { $push: { comments: newComment._id } });
+    
+            res.status(201).json(newComment);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Server Error");
+        }
+    });
+
+    /* .get(
         "/",
          authControl, async (req, res, next) => {
             try {
@@ -27,9 +79,10 @@ postsRouter
                 next(error)
             }
         }
-    ) 
+    )  */
 
-    .post("/", async (req, res) => {
+
+    /* .post("/", async (req, res) => {
 
         const newPost = await Post.create({
             ...req.body,
@@ -78,6 +131,6 @@ postsRouter
         } catch (error) {
             next(error)
         }
-    })
+    }) */
 
 export default postsRouter

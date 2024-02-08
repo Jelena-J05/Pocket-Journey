@@ -1,13 +1,12 @@
 import mongoose, { Schema } from "mongoose"
 
 const ReactionsSchema = new Schema({
-
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    text: { type: String, required: true },
-    image: String, 
+    user: { type: Schema.Types.ObjectId, ref: "users" },
+    description: { type: String, required: true },
+    image: String,
     createdAt: { type: Date, default: Date.now },
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
-  });
-  
+    likes: [{ type: Schema.Types.ObjectId, ref: "users" }],
+    comments: [{ type: Schema.Types.ObjectId, ref: "comments" }],
+})
+
 export const Reaction = mongoose.model("reactions", ReactionsSchema)

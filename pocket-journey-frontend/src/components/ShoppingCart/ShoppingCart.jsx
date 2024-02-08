@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus, faMinus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import BookingForm from "./BookingForm"
-import { useCart } from "../CartContext"
+import { useCart } from "../../contexts/CartContext"
 
 function ShoppingCart() {
     const { cartItems, removeFromCart, updateQuantity } = useCart()

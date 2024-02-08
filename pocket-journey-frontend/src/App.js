@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/UserAccount/Login";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import ShoppingCart from "./components/ShoppingCart";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 /* import BookFlights from "./components/BookFlights"; */
-import GlobalCommunityPage from "./components/GlobalCommunityPage";
-import LayoutWithNavBar from "./components/LayoutWithNavbar";
+import GlobalCommunityPage from "./components/GlobalCommunity/GlobalCommunityPage";
+import LayoutWithNavBar from "./components/NavBar/LayoutWithNavbar";
 import Register from "./components/UserAccount/Register";
 import EditAccount from "./components/UserAccount/EditAccount";
-import { UserProvider } from './UserContext'; // Importa UserProvider
-import { CartProvider } from './CartContext'; // Importa il CartProvider
+import { UserProvider } from './contexts/UserContext'; 
+import { CartProvider } from './contexts/CartContext'; 
 
 function App() {
 
