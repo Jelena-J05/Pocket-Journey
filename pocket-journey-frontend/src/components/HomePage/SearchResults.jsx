@@ -28,7 +28,10 @@ function SearchResults({ results, category }) {
                 <Col md="4">
                     {results.map((result, index) => {
                         const guests = result.guests || 2
-                        const handleAddToCart = () => addToCart(result, guests)
+                        const handleAddToCart = () => {
+                            const itemWithCategory = { ...result, category }
+                            addToCart(itemWithCategory, guests)
+                        }
                         return (
                             <Card
                                 key={index}
