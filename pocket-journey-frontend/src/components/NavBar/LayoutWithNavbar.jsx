@@ -1,14 +1,13 @@
 // components/LayoutWithNavBar.js
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import NavBar from './NavBar';
+import React from "react"
+import { Outlet } from "react-router-dom"
+import NavBar from "./NavBar"
 
 const LayoutWithNavBar = () => (
-  <>
-    <NavBar />
-    <Outlet />
-  </>
-);
+    <>
+        <NavBar />
+        <Outlet />
+    </>
+)
 
-export default LayoutWithNavBar;
- 
+export default LayoutWithNavBar

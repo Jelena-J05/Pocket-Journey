@@ -38,7 +38,7 @@ const FlightsSchema = new Schema({
         type: String,
         required: true,
     },
-    flightTime: {
+    time: {
         type: String,
     },
 })

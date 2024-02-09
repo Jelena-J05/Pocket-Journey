@@ -1,31 +1,23 @@
 import React from "react"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
-import { useCart } from '../../contexts/CartContext';
+import { useCart } from "../../contexts/CartContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-    faPlane,
     faEuro,
     faSuitcaseRolling,
     faHotel,
     faUtensils,
-    faMapMarkerAlt,
     faBookmark,
     faPlaneDeparture,
 } from "@fortawesome/free-solid-svg-icons"
 
-
-
 function formatDate(dateString) {
     const options = { year: "numeric", month: "long", day: "numeric" }
     return new Date(dateString).toLocaleDateString("en-US", options)
-};
-
-
-
+}
 
 function SearchResults({ results, category }) {
-    // Se non ci sono risultati, non renderizzare nulla
-    const { addToCart } = useCart();
+    const { addToCart } = useCart()
     if (!Array.isArray(results) || results.length === 0) {
         return null
     }
@@ -35,68 +27,72 @@ function SearchResults({ results, category }) {
             <Row className="d-flex justify-content-center mt-5">
                 <Col md="4">
                     {results.map((result, index) => {
-                        const guests = result.guests || 2;
-                        const handleAddToCart = () => addToCart(result, guests);
-                        
-                        // Aggiunta del return qui
+                        const guests = result.guests || 2
+                        const handleAddToCart = () => addToCart(result, guests)
                         return (
-                        <Card key={index} className="mt-4 mb-4 border border-4">
-                            <Card.Body className="fs-4">
-                                <div>
-                                    <div>
-                                    <FontAwesomeIcon
-                                            icon={
-                                                category === "FLIGHTS"
-                                                ? faPlaneDeparture
-                                                : category === "HOTELS"
-                                                ? faHotel
-                                                : category === "RESTAURANTS"
-                                                ? faUtensils
-                                                : faPlaneDeparture// Fallback per le categorie non specificate
-                                        }
-                                        className="ms-2 me-2 color-icon"
-                                    />
-                                        <span className="fs-3 fw-bold me-3">
-                                            {result.from ||
-                                                result.name ||
-                                                result.city}
-                                        </span>
-                                        <span className="fs-3 fw-bold">
-                                            {result.to ||
-                                                result.name ||
-                                                result.city}
-                                        </span>
-                                    </div>
+                            <Card
+                                key={index}
+                                className="mt-4 mb-4 border border-4"
+                            >
+                                <Card.Body className="fs-4">
                                     <div>
                                         <div>
-                                            {" "}
-                                            {result.departureDate && (
+                                            <FontAwesomeIcon
+                                                icon={
+                                                    category === "FLIGHTS"
+                                                        ? faPlaneDeparture
+                                                        : category === "HOTELS"
+                                                        ? faHotel
+                                                        : category ===
+                                                          "RESTAURANTS"
+                                                        ? faUtensils
+                                                        : faPlaneDeparture
+                                                }
+                                                className="ms-2 me-2 color-icon"
+                                            />
+                                            <span className="fs-3 fw-bold me-3">
+                                                {result.from ||
+                                                    result.name ||
+                                                    result.city}
+                                            </span>
+                                            <span className="fs-3 fw-bold">
+                                                {result.to ||
+                                                    result.name ||
+                                                    result.city}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                {" "}
+                                                {result.departureDate && (
+                                                    <>
+                                                        Departure:{" "}
+                                                        {formatDate(
+                                                            result.departureDate
+                                                        )}
+                                                    </>
+                                                )}
+                                            </div>
+                                            {result.returnDate && (
                                                 <>
-                                                    Departure:{" "}
+                                                    Return:{" "}
                                                     {formatDate(
-                                                        result.departureDate
+                                                        result.returnDate
+                                                    )}
+                                                </>
+                                            )}
+                                            {result.checkOut && (
+                                                <>
+                                                    Check-Out:{" "}
+                                                    {formatDate(
+                                                        result.checkOut
                                                     )}
                                                 </>
                                             )}
                                         </div>
-                                        {result.returnDate && (
-                                            <>
-                                                Return:{" "}
-                                                {formatDate(result.returnDate)}
-                                            </>
-                                        )}
-                                        {result.checkOut && (
-                                            <>
-                                                Check-Out:{" "}
-                                                {formatDate(result.checkOut)}
-                                            </>
-                                        )}
                                     </div>
-                                </div>
-                                <div>
-                                    {
-                                        // Determina quale URL utilizzare per l'immagine, se disponibile
-                                        (result.logo || result.image) && (
+                                    <div>
+                                        {(result.logo || result.image) && (
                                             <img
                                                 src={
                                                     result.logo || result.image
@@ -104,27 +100,45 @@ function SearchResults({ results, category }) {
                                                 className="img-fluid logo-img"
                                                 alt="Logo"
                                             />
-                                        )
-                                    }
-                                </div>
-                            </Card.Body>
-                            <Card.Footer className="d-flex justify-content-around align-items-center">
+                                        )}
+                                    </div>
+                                </Card.Body>
+                                <Card.Footer className="d-flex justify-content-around align-items-center">
                                     <p className="fs-5">
-                                        Price: <span className="fs-3 fw-bold color-icon">{result.price || result.averageCost}</span>
-                                        <FontAwesomeIcon icon={faEuro} className="fs-3 fw-bold ms-2 color-icon" />
+                                        Price:{" "}
+                                        <span className="fs-3 fw-bold color-icon">
+                                            {result.price || result.averageCost}
+                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faEuro}
+                                            className="fs-3 fw-bold ms-2 color-icon"
+                                        />
                                     </p>
-                                    <Button className="button-style fs-5 fw-bold p-2" onClick={handleAddToCart}>
-                                        Add to {category === "HOTELS" ? "Bookmarks" : "Cart"}
-                                        <FontAwesomeIcon icon={category === "HOTELS" ? faBookmark : faSuitcaseRolling} className="ms-2"/>
+                                    <Button
+                                        className="button-style fs-5 fw-bold p-2"
+                                        onClick={handleAddToCart}
+                                    >
+                                        Add to{" "}
+                                        {category === "HOTELS"
+                                            ? "Bookmarks"
+                                            : "Cart"}
+                                        <FontAwesomeIcon
+                                            icon={
+                                                category === "HOTELS"
+                                                    ? faBookmark
+                                                    : faSuitcaseRolling
+                                            }
+                                            className="ms-2"
+                                        />
                                     </Button>
                                 </Card.Footer>
                             </Card>
-                        );
+                        )
                     })}
                 </Col>
             </Row>
         </Container>
-    );
+    )
 }
 
-export default SearchResults;
+export default SearchResults

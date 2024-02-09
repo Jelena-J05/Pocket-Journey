@@ -22,8 +22,6 @@ body {
     transform: translateX(-50%);
 }
 
-
-
 .card-hover-animate {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -52,13 +50,13 @@ body {
 
 .button-style {
     background-color: #ffa057 !important;
-    border:2px solid rgba(255, 255, 255, 0.5)!important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
 }
 
 .button-style:hover {
     background-color: white !important;
     color: #ffa057 !important;
-    border:2px solid  #ffa057 !important;
+    border: 2px solid #ffa057 !important;
 }
 
 
@@ -67,7 +65,8 @@ body {
 }
 
 .btn:hover {
-    background-color: white;;
+    background-color: white;
+    ;
     color: #ffa057;
 }
 
@@ -79,4 +78,3 @@ a {
 a:hover {
     color: #ffa057;
 }
-

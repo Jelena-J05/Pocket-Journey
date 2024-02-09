@@ -1,12 +1,7 @@
 import React from "react"
-/* import FlyingPlane from "./FlyingPlane"
- */
 import FooterDark from "../Footer/FooterDark"
 import { useNavigate } from "react-router"
-/* import { Link } from "react-router-dom"
- */ import { useState } from "react"
-/* import { GoogleLoginButton } from "react-social-login-buttons"
- */
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./Login.scss"
 
@@ -18,38 +13,30 @@ function Login() {
     })
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         let response = await fetch(`http://localhost:3030/api/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(body),
-        });
+        })
         if (response.ok) {
-            let data = await response.json();
-    
-            // Pulisce il local storage prima di impostare i nuovi valori
-           /*  localStorage.clear(); // Rimuove tutti i dati dal local storage */
-    
-            // Oppure, per rimuovere specifici elementi:
-            // localStorage.removeItem('token');
-            // localStorage.removeItem('user');
-    
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user", JSON.stringify(data.payload));
-    
-            navigate("/");
+            let data = await response.json()
+
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("user", JSON.stringify(data.payload))
+
+            navigate("/")
         } else {
-            document.getElementById("error").innerHTML = "Wrong Credentials!";
-            setBody({ ...body, password: "" });
+            document.getElementById("error").innerHTML = "Wrong Credentials!"
+            setBody({ ...body, password: "" })
         }
-    };
+    }
     return (
         <>
             <section className="section-container">
-{/*             <div className="main-container mb-5 mt-0">
- */}                <div className="container">
+                <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6">
                             <div className="login-plane-container">
@@ -114,29 +101,10 @@ function Login() {
                         </div>
                     </div>
                 </div>
-{/*                 </div>
- */}                </section>
-                <FooterDark />
+            </section>
+            <FooterDark />
         </>
     )
 }
 
 export default Login
-
-/* <GoogleLoginButton
-className="mt-4 fs-6"
-onClick={() => {
-    window.location.assign(
-        `api/profile/oauth-google`
-    )
-}}
-></GoogleLoginButton>
-<div className="text-center mt-3 w-100">
-<Link
-    to="/register"
-    className="text-decoration-none"
->
-    Don't have an account? Sign Up
-</Link>
-</div>
- */

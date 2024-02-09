@@ -1,103 +1,101 @@
 .Section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position:center;
-  height: 60vh;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    width: 100%;
 
-  @media (max-width: 768px) {
-    padding: 20px;
-    height: auto;
-    flex-direction: column;
-  }
+    @media (max-width: 768px) {
+        padding: 20px;
+        height: auto;
+        flex-direction: column;
+    }
 }
 
 .Content {
-  max-width: 960px;
-  width: 100%;
-  padding: 2rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.3);
+    max-width: 960px;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.3);
 
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
 }
 
 .Tabs {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
+    display: flex;
+    gap: 10px;
     justify-content: center;
-    gap: 5px;
-  }
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        justify-content: center;
+        gap: 5px;
+    }
 }
 
 .Tab {
-  background-color: transparent;
-  color: black;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 0.8rem 1.6rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  &.active {
-    color: #fff; // Testo bianco per contrasto
-    background-color: #ffa057; // Sfondo arancione per la tab attiva
-  }
+    background-color: transparent;
+    color: black;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.8rem 1.6rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    &.active {
+        color: #fff; 
+        background-color: #ffa057; 
+    }
 
-  
-  @media (max-width: 768px) {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
+    @media (max-width: 768px) {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
 }
 
 .Tabs {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  margin-bottom: 20px; /* Aggiungi spazio tra i tabs e il modulo di ricerca */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; 
 }
 
 .SearchBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 1rem;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+    gap: 10px;
 
-  @media (max-width: 1024px) {
-    flex-wrap: nowrap;
-  }
+    @media (max-width: 1024px) {
+        flex-wrap: nowrap;
+    }
 }
 
 .SearchInput {
-  flex: 1;
-  min-width: 0;
-  padding: 0.5rem;
-  margin: 0 5px;
-  border: none;
-  background: transparent;
-  font-size: 1rem;
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem;
+    margin: 0 5px;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
 
-  &:last-child {
-    margin-right: 0;
-  }
+    &:last-child {
+        margin-right: 0;
+    }
 }
 .SearchButton {
-  min-width: 120px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
+    min-width: 120px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-

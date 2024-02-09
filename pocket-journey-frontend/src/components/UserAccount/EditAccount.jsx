@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-/* import { useNavigate } from "react-router-dom" */
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -8,7 +7,7 @@ import Row from "react-bootstrap/Row"
 import "./EditAccount.scss"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { useUser } from "../../contexts/UserContext" // Assicurati che il percorso sia corretto
+import { useUser } from "../../contexts/UserContext"
 
 function EditAccount() {
     const { user, setUser } = useUser()
@@ -20,10 +19,7 @@ function EditAccount() {
         bio: "",
     })
 
-   /*  const { id } = useParams() */
-   /*  const navigate = useNavigate() */
     const token = localStorage.getItem("token")
-    /*  const user = JSON.parse(localStorage.getItem("user")) */
 
     const fetchData = async () => {
         if (user && user.id) {
@@ -133,7 +129,6 @@ function EditAccount() {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    /*  onClose: () => navigate("/"),  */
                 })
             } else {
                 toast.error("Failed to update account.")

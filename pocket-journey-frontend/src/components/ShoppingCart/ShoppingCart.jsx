@@ -15,7 +15,7 @@ function ShoppingCart() {
     useEffect(() => {
         const count = cartItems.reduce((acc, item) => acc + item.quantity, 0)
         setItemCount(count)
-    }, [cartItems]) // Dipendenza da cartItems per ricalcolare al loro cambiamento
+    }, [cartItems]) 
 
     return (
         <>
@@ -57,15 +57,13 @@ function ShoppingCart() {
                                                     <span>
                                                         {item.destination}{" "}
                                                     </span>
-                                                    {/* Buttons for removing item or moving to wish list */}
                                                 </div>
                                                 <div className="col-lg-7 col-md-6 mb-4 mb-lg-0 d-flex gap-4 align-items-center">
                                                     <span>
                                                         Price: {item.price}€
                                                     </span>
                                                     <span>
-                                                        Quantity:{" "}
-                                                        {item.guests}
+                                                        Quantity: {item.guests}
                                                     </span>
                                                     <button
                                                         onClick={() =>

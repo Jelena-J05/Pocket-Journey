@@ -16,21 +16,20 @@ import {
     faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
-import DeleteAccount from "../UserAccount/DeleteAccount" 
-import { useUser } from "../../contexts/UserContext" 
+import DeleteAccount from "../UserAccount/DeleteAccount"
+import { useUser } from "../../contexts/UserContext"
 import { useCart } from "../../contexts/CartContext"
 
 function NavBar() {
-    const { user, setUser} = useUser()
+    const { user, setUser } = useUser()
     const { cartItems } = useCart()
 
+    const [itemCount, setItemCount] = useState(0)
 
-const [itemCount, setItemCount] = useState(0);
-
-useEffect(() => {
-  const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  setItemCount(count);
-}, [cartItems]); // Dipendenza da cartItems per ricalcolare al loro cambiamento
+    useEffect(() => {
+        const count = cartItems.reduce((acc, item) => acc + item.quantity, 0)
+        setItemCount(count)
+    }, [cartItems])
 
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 
@@ -45,7 +44,6 @@ useEffect(() => {
     const [token, setToken] = useState(null)
 
     useEffect(() => {
-        // Carica i dati dell'utente da localStorage
         const userData = localStorage.getItem("user")
         const authToken = localStorage.getItem("token")
 
@@ -84,10 +82,7 @@ useEffect(() => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav
-                        className="justify-content-center gap-4"
-        
-                    >
+                    <Nav className="justify-content-center gap-4">
                         <Nav.Link as={Link} to="/" className="text-white">
                             Home
                             <FontAwesomeIcon
@@ -117,8 +112,14 @@ useEffect(() => {
                                     icon={faSuitcaseRolling}
                                     className="fs-4 ms-2"
                                 />
-                                <span className="badge bg-secondary position-absolute top-0 start-100 translate-middle button-style" style={{ fontSize: '0.6em', padding: '0.25em 0.4em' }}>
-                                {itemCount}
+                                <span
+                                    className="badge bg-secondary position-absolute top-0 start-100 translate-middle button-style"
+                                    style={{
+                                        fontSize: "0.6em",
+                                        padding: "0.25em 0.4em",
+                                    }}
+                                >
+                                    {itemCount}
                                 </span>
                             </button>
                         </Nav.Link>
@@ -172,7 +173,6 @@ useEffect(() => {
                                     Delete Account
                                 </NavDropdown.Item>
 
-                                {/* Passa showDeleteModal come prop al componente DeleteAccount */}
                                 <DeleteAccount
                                     show={showDeleteModal}
                                     handleClose={handleCloseDeleteModal}

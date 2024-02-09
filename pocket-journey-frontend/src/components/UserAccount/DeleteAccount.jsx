@@ -1,9 +1,9 @@
-import React from "react";
-import { Modal, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import React from "react"
+import { Modal, Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 function DeleteAccount(props) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleDelete = async () => {
         try {
@@ -18,16 +18,15 @@ function DeleteAccount(props) {
             )
 
             if (response.ok) {
-                navigate("/login"); // Reindirizza l'utente alla pagina di login dopo l'eliminazione
+                navigate("/login")
             } else {
-                // Gestisci qui l'errore in caso di errore nella richiesta DELETE
-                console.error("Errore durante l'eliminazione dell'account");
+                console.error("Errore durante l'eliminazione dell'account")
             }
         } catch (error) {
             console.error(
                 "Si è verificato un errore durante la richiesta DELETE:",
                 error
-            );
+            )
         }
     }
 
@@ -48,7 +47,7 @@ function DeleteAccount(props) {
                 </Button>
             </Modal.Footer>
         </Modal>
-    );
+    )
 }
 
-export default DeleteAccount;
+export default DeleteAccount

@@ -38,6 +38,9 @@ const TrainsSchema = new Schema({
         type: String,
         required: true,
     },
+    time: {
+        type: String,
+    },
 })
 
 export const Train = mongoose.model("trains", TrainsSchema)

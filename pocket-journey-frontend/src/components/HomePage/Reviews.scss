@@ -1,17 +1,15 @@
-// Reviews.scss
 .carousel-item img {
-    width: 100%; // Assicura che l'immagine occupi l'intera larghezza del contenitore
-  }
-  
-  .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5); // Opzionale: migliora la leggibilità del testo
-    color: #fff;
-    padding: 1rem; // Aggiunge un po' di spazio intorno al testo
-    border-radius: 0.5rem; // Opzionale: aggiunge bordi arrotondati al box di testo
-  }
+    width: 100%;
+}
 
-  .img-height {
-    height: 400px; // Puoi regolare questa altezza secondo le tue preferenze
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.img-height {
+    height: 400px;
     object-fit: cover;
-  }
-  
+}

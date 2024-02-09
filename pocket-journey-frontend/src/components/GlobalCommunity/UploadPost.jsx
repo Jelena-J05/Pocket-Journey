@@ -7,8 +7,8 @@ const UploadPost = ({ onPostSubmit }) => {
     const token = localStorage.getItem("token")
 
     if (!token) {
-        alert("You must be logged in to post.");
-        return;
+        alert("You must be logged in to post.")
+        return
     }
 
     const handleDescriptionChange = (e) => {
@@ -23,7 +23,6 @@ const UploadPost = ({ onPostSubmit }) => {
             return
         }
 
-        // Preparazione dei dati da inviare come JSON
         const postData = { description }
 
         try {
@@ -37,20 +36,20 @@ const UploadPost = ({ onPostSubmit }) => {
             })
 
             if (response.ok) {
-                const newPost = await response.json();
-                // Aggiungi manualmente le informazioni dell'utente a newPost prima di passarlo
+                const newPost = await response.json()
                 const postWithUserInfo = {
                     ...newPost,
-                    user: [{
-                        _id: user.id, // Assicurati che 'id' sia la proprietà corretta per l'ID dell'utente
-                        avatar: user.avatar,
-                        name: user.name // Assumi che questi siano disponibili nel contesto utente
-                    }]
-                };
-                onPostSubmit(postWithUserInfo);
-                alert("Post submitted successfully!");
-                setDescription(""); // Reset del campo di input dopo il successo
-    
+                    user: [
+                        {
+                            _id: user.id,
+                            avatar: user.avatar,
+                            name: user.name,
+                        },
+                    ],
+                }
+                onPostSubmit(postWithUserInfo)
+                alert("Post submitted successfully!")
+                setDescription("")
             } else {
                 throw new Error("Failed to submit post")
             }
@@ -61,7 +60,11 @@ const UploadPost = ({ onPostSubmit }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="container mt-5">
+        <form
+            onSubmit={handleSubmit}
+            className="container pt-5"
+            style={{ opacity: 0.9 }}
+        >
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="form-group d-flex">
@@ -73,7 +76,7 @@ const UploadPost = ({ onPostSubmit }) => {
                                 width: "40px",
                                 height: "40px",
                             }}
-                        /> 
+                        />
                         <textarea
                             placeholder="Write a description..."
                             value={description}
