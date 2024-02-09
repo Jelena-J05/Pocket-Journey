@@ -16,7 +16,7 @@ const FlightsSchema = new Schema({
     returnDate: {
         type: String,
     },
-  
+
     adults: {
         type: String,
     },
@@ -38,7 +38,9 @@ const FlightsSchema = new Schema({
         type: String,
         required: true,
     },
-
+    flightTime: {
+        type: String,
+    },
 })
 
 export const Flight = mongoose.model("flights", FlightsSchema)

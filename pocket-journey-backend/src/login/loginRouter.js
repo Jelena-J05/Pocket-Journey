@@ -17,7 +17,6 @@ loginRouter.post("/", async (req, res, next) => {
             return res.status(401).send({ message: "unauthorized" })
         }
 
-
         const payload = {
             id: user._id,
             name: user.name,
@@ -26,8 +25,8 @@ loginRouter.post("/", async (req, res, next) => {
             birthday: user.birthday,
             avatar: user.avatar,
             bio: user.bio,
-        };    
-        
+        }
+
         const token = jwt.sign(payload, process.env.JWT_SECRET)
         res.status(200).json({ payload: payload, token: token })
     } catch (error) {

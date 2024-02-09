@@ -32,7 +32,6 @@ const RestaurantsSchema = new Schema({
         type: String,
         required: true,
     },
-
 })
 
 export const Restaurant = mongoose.model("restaurants", RestaurantsSchema)

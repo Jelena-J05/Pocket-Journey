@@ -4,20 +4,11 @@ import { CloudinaryStorage } from "multer-storage-cloudinary"
 
 const avatarUpload = multer({
     storage: new CloudinaryStorage({
-      cloudinary,
-      params: {
-        folder: "Pocket Journey"
-      },
+        cloudinary,
+        params: {
+            folder: "Pocket Journey",
+        },
     }),
-  }).single('avatar');
-  
-  /* const imageUpload = multer({
-    storage: new CloudinaryStorage({
-      cloudinary,
-      params: {
-        folder: "Pocket Journey"
-      },
-    }),
-  }).single('image'); */
+}).single("avatar")
 
-  export default avatarUpload
+export default avatarUpload

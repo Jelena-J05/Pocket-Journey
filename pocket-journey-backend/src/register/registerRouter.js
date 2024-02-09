@@ -1,22 +1,19 @@
-import express from "express";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { User } from "../users/usersModel.js";
+import express from "express"
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import { User } from "../users/usersModel.js"
 import avatarUpload from "../a-settings/cloudinary.js"
 
-const registerRouter = express.Router();
+const registerRouter = express.Router()
 
 registerRouter.post("/", avatarUpload, async (req, res, next) => {
     try {
-        const { email, password, name, lastName, birthday, bio } = req.body;
-     // Inizializza una variabile per il percorso dell'avatar
+        const { email, password, name, lastName, birthday, bio } = req.body
 
-     const avatarUrl = req.file ? req.file.path : ""; // Usa `path` o `url` a seconda della tua configurazione Cloudinary
+        const avatarUrl = req.file ? req.file.path : ""
 
-        // Hashing della password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10)
 
-        // Creazione del nuovo utente
         const user = new User({
             email,
             password: hashedPassword,
@@ -24,30 +21,29 @@ registerRouter.post("/", avatarUpload, async (req, res, next) => {
             lastName,
             birthday,
             bio,
-            avatar: avatarUrl, // Salva il percorso del file dell'avatar
-        });
+            avatar: avatarUrl,
+        })
 
-        await user.save();
+        await user.save()
 
-        // Creazione del payload per il token
         const payload = {
             id: user._id,
             email: user.email,
             name: user.name,
             lastName: user.lastName,
             birthday: user.birthday,
-            avatar: avatarUrl, // Usa l'URL restituito da Cloudinary
+            avatar: avatarUrl,
             bio: user.bio,
-        };
+        }
 
-        // Generazione del token
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '120d' });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "120d",
+        })
 
         res.status(201).json({
             message: "User registered successfully",
             token: token,
             payload: {
-                
                 id: user.id,
                 email: user.email,
                 name: user.name,
@@ -55,13 +51,11 @@ registerRouter.post("/", avatarUpload, async (req, res, next) => {
                 birthday: user.birthday,
                 avatar: user.avatar,
                 bio: user.bio,
-            
-            }
-        });
+            },
+        })
     } catch (error) {
-        next(error);
+        next(error)
     }
-});
+})
 
-export default registerRouter;
-
+export default registerRouter

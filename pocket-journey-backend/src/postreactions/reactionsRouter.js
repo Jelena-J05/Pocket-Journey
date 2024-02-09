@@ -6,23 +6,22 @@ const reactionsRouter = express.Router()
 reactionsRouter
     .get("/", async (req, res, next) => {
         try {
-            let reactions = await Reaction.find();
-            res.send(reactions);
+            let reactions = await Reaction.find()
+            res.send(reactions)
         } catch (error) {
-            next(error);
+            next(error)
         }
     })
-    .get("/:id",  async (req, res, next) => {
+    .get("/:id", async (req, res, next) => {
         try {
-            let reaction = await Reaction.findById(req.params.id);
-            res.send(reaction); 
+            let reaction = await Reaction.findById(req.params.id)
+            res.send(reaction)
         } catch (error) {
-            next(error);
+            next(error)
         }
     })
 
     .post("/", async (req, res) => {
-
         const newReaction = await Reaction.create({
             ...req.body,
         })
@@ -30,22 +29,20 @@ reactionsRouter
         res.status(201).send(newReaction)
     })
 
-    .put(
-        "/:id",  async (req, res, next) => {
-            try {
-                let reaction = await Reaction.findByIdAndUpdate(
-                    req.params.id,
-                    req.body,
-                    {
-                        new: true,
-                    }
-                )
-                res.send(reaction)
-            } catch (error) {
-                next(error)
-            }
+    .put("/:id", async (req, res, next) => {
+        try {
+            let reaction = await Reaction.findByIdAndUpdate(
+                req.params.id,
+                req.body,
+                {
+                    new: true,
+                }
+            )
+            res.send(reaction)
+        } catch (error) {
+            next(error)
         }
-    ) 
+    })
     .delete("/:id", async (req, res, next) => {
         try {
             await Reaction.deleteOne({
@@ -55,6 +52,6 @@ reactionsRouter
         } catch (error) {
             next(error)
         }
-    }) 
+    })
 
 export default reactionsRouter

@@ -7,7 +7,6 @@ const PostsSchema = new Schema({
     createdAt: { type: Date, default: Date.now },
     likes: [{ type: Schema.Types.ObjectId, ref: "users" }],
     comments: [{ type: Schema.Types.ObjectId, ref: "comments" }],
-
 })
 
 export const Post = mongoose.model("posts", PostsSchema)

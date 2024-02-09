@@ -16,7 +16,7 @@ const TrainsSchema = new Schema({
     returnDate: {
         type: String,
     },
-  
+
     adults: {
         type: String,
     },
@@ -38,7 +38,6 @@ const TrainsSchema = new Schema({
         type: String,
         required: true,
     },
-
 })
 
 export const Train = mongoose.model("trains", TrainsSchema)

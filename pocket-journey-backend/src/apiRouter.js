@@ -11,13 +11,7 @@ import postsRouter from "./posts/postsRouter.js"
 import reactionsRouter from "./postreactions/reactionsRouter.js"
 import commentsRouter from "./postcomments/commentsRouter.js"
 
-
-
- 
-
-
 const apiRouter = express.Router()
-
 
 apiRouter.get("/test", (req, res) => {
     res.json({ message: "hello, world" })
@@ -35,12 +29,11 @@ apiRouter.use("/hotels", hotelsRouter)
 apiRouter.use("/restaurants", restaurantsRouter)
 apiRouter.use("/activities", activitiesRouter)
 apiRouter.use("/users", usersRouter)
-apiRouter.use("/login", loginRouter) 
-apiRouter.use("/register", registerRouter) 
-apiRouter.use("/profile", usersRouter) 
-apiRouter.use("/posts", postsRouter) 
-apiRouter.use("/comments", commentsRouter) 
-apiRouter.use("/reactions", reactionsRouter) 
-
+apiRouter.use("/login", loginRouter)
+apiRouter.use("/register", registerRouter)
+apiRouter.use("/profile", usersRouter)
+apiRouter.use("/posts", postsRouter)
+apiRouter.use("/comments", commentsRouter)
+apiRouter.use("/reactions", reactionsRouter)
 
 export default apiRouter

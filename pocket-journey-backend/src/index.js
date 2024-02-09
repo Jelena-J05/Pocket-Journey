@@ -1,8 +1,8 @@
-import express from 'express';
-import apiRouter from './apiRouter.js';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import 'dotenv/config';
+import express from "express"
+import apiRouter from "./apiRouter.js"
+import mongoose from "mongoose"
+import cors from "cors"
+import "dotenv/config"
 
 const port = process.env.PORT || 3030
 const server = express()

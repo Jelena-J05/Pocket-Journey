@@ -12,7 +12,7 @@ restaurantsRouter
             res.status(500).send(error)
             next(error)
         }
-    }) /*WORKING*/
+    })
     .get("/:id", async (req, res, next) => {
         const { id } = req.params
         try {
@@ -21,7 +21,7 @@ restaurantsRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 
     .post("/", async (req, res) => {
         const newRestaurant = await Restaurant.create({
@@ -29,8 +29,7 @@ restaurantsRouter
         })
 
         res.status(201).send(newRestaurant)
-    }) /*WORKING*/
-
+    })
     .put("/:id", async (req, res, next) => {
         try {
             const updatedRestaurant = await Restaurant.findByIdAndUpdate(
@@ -45,7 +44,7 @@ restaurantsRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 
     .delete("/:id", async (req, res, next) => {
         try {
@@ -61,6 +60,6 @@ restaurantsRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 
 export default restaurantsRouter

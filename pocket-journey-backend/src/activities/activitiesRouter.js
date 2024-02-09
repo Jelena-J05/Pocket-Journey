@@ -12,7 +12,7 @@ activitiesRouter
             res.status(500).send(error)
             next(error)
         }
-    }) /*WORKING*/
+    })
     .get("/:id", async (req, res, next) => {
         const { id } = req.params
         try {
@@ -21,7 +21,7 @@ activitiesRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 
     .post("/", async (req, res) => {
         const newActivity = await Activity.create({
@@ -29,7 +29,7 @@ activitiesRouter
         })
 
         res.status(201).send(newActivity)
-    }) /*WORKING*/
+    })
 
     .put("/:id", async (req, res, next) => {
         try {
@@ -45,7 +45,7 @@ activitiesRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 
     .delete("/:id", async (req, res, next) => {
         try {
@@ -61,5 +61,5 @@ activitiesRouter
         } catch (error) {
             next(error)
         }
-    }) /*WORKING*/
+    })
 export default activitiesRouter

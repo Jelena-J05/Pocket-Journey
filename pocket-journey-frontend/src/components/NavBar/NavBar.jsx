@@ -86,7 +86,7 @@ useEffect(() => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav
                         className="justify-content-center gap-4"
-                        style={{ flexGrow: 1 }}
+        
                     >
                         <Nav.Link as={Link} to="/" className="text-white">
                             Home
